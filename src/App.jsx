@@ -5,12 +5,18 @@ import './App.css'
 import Hero from './components/Hero.jsx';
 import React from 'react';
 import Navbar from './components/Navbar.jsx';
+import ProjectsSection from './components/ProjectsSection.jsx';
+import ContactSection from './components/ContactSection.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Hero />
+      <ProjectsSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
 }
