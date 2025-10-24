@@ -1,122 +1,112 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import Project1 from "../assets/project_images/Project1.png";
 
 const projects = [
-    {
-        title: "Project One",
-        shortDesc: "A brief description of Project One.",
-        description:
-            "Project One is a comprehensive application that allows users to manage their tasks efficiently. It features a user-friendly interface, real-time collaboration, and seamless integration with other productivity tools.",
-        tech: ["React", "Node.js", "MongoDB"],
-        images: "/assests/project_images/project1.png",
-        github: "#",
-        live: "#",
-        color: "bg-indigo-700",
-    },
-    {
-        title: "Project One",
-        shortDesc: "A brief description of Project One.",
-        description:
-            "Project One is a comprehensive application that allows users to manage their tasks efficiently. It features a user-friendly interface, real-time collaboration, and seamless integration with other productivity tools.",
-        tech: ["React", "Node.js", "MongoDB"],
-        images: "/assests/project_images/project1.png",
-        github: "#",
-        live: "#",
-        color: "bg-indigo-700",
-    },
-    {
-        title: "Project One",
-        shortDesc: "A brief description of Project One.",
-        description:
-            "Project One is a comprehensive application that allows users to manage their tasks efficiently. It features a user-friendly interface, real-time collaboration, and seamless integration with other productivity tools.",
-        tech: ["React", "Node.js", "MongoDB"],
-        images: "/assests/project_images/project1.png",
-        github: "#",
-        live: "#",
-        color: "bg-indigo-700",
-    },
+  {
+    title: "Plant Disease Detection System",
+    description:
+      "An AI-powered plant disease detection web application built with Streamlit, TensorFlow (Keras), and FPDF. This system allows farmers, researchers, and agriculture enthusiasts to upload or capture leaf images, detect plant diseases using a trained CNN model, and download detailed PDF reports. It also keeps a prediction history and includes a feedback submission feature.",
+    tech: ["Python 3.9+", "Streamlit", "TensorFlow/Keras", "NumPy", "Pandas", "FPDF"],
+    images: Project1,
+    github: "https://github.com/Tanisha02806/Plant_Disease_Detection_System_Streamlit",
+    color: "bg-white",
+  },
+  // {
+  //   title: "Project Two",
+  //   shortDesc: "A brief description of Project Two.",
+  //   description:
+  //     "Project Two focuses on AI-driven analytics for better data visualization and decision-making. It uses advanced algorithms and provides an elegant dashboard experience.",
+  //   tech: ["Python", "TensorFlow", "Streamlit"],
+  //   images: "/assests/project_images/project2.png",
+  //   github: "#",
+  //   live: "#",
+  //   color: "bg-white",
+  // },
+  // {
+  //   title: "Project Three",
+  //   shortDesc: "A brief description of Project Three.",
+  //   description:
+  //     "Project Three is a sleek e-commerce platform offering real-time inventory tracking and secure payment integration for a smooth shopping experience.",
+  //   tech: ["Next.js", "Firebase", "TailwindCSS"],
+  //   images: "/assests/project_images/project3.png",
+  //   github: "#",
+  //   live: "#",
+  //   color: "bg-white",
+  // },
 ];
 
 export default function ProjectsSection() {
-    const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState(null);
 
-    return (
-        <section
-            id="projects"
-            className="py-20 bg-[#0b0220] text-white">
-            <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center mb-10">My Projects</h2>
+  return (
+    <section id="projects" className="py-28">
+      <div className="max-w-6xl mx-auto px-8">
+        <h2 className="text-5xl font-bold text-center mb-20 text-gray-900">
+          My Projects
+        </h2>
 
-                {/* === Grid of Project Cards === */}
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {projects.map((proj, index) => (
-                        <div
-                            key={index}
-                            className={`rounded-2xl p-6 shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 ${proj.color}`}
-                            onClick={() => setSelected(proj)}
-                        >
-                            <h3 className="text-2xl font-semibold mb-2">{proj.title}</h3>
-                            <p className="text-sm opacity-80">{proj.shortDesc}</p>
-                        </div>
-                    ))}
+        <div className="space-y-24">
+          {projects.map((proj, index) => (
+            <div
+              key={index}
+              className={`flex flex-col md:flex-row items-center gap-12 ${
+                index % 2 === 1 ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              {/* === Image Section === */}
+              <div
+                className={`md:w-1/2 w-full transform transition duration-500 hover:scale-[1.03] ${proj.color} rounded-2xl shadow-lg`}
+              >
+                <img
+                  src={proj.images}
+                  alt={proj.title}
+                  className="w-full h-full object-cover rounded-2xl border border-gray-200"
+                />
+              </div>
+
+              {/* === Text Section === */}
+              <div className="md:w-1/2 space-y-4">
+                <h3 className="text-3xl font-semibold text-gray-900">
+                  {proj.title}
+                </h3>
+                <p className="text-gray-700 text-lg">{proj.shortDesc}</p>
+                <p className="text-gray-600 leading-relaxed">{proj.description}</p>
+
+                <p className="mt-4 font-semibold text-gray-700">Tech Stack:</p>
+                <ul className="flex flex-wrap gap-3 text-gray-700">
+                  {proj.tech.map((tech, i) => (
+                    <li
+                      key={i}
+                      className="bg-gray-200 px-3 py-1 rounded-full text-sm border border-gray-300"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex gap-4 mt-6">
+                  <a
+                    href={proj.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-pink-500 text-white px-6 py-2 rounded-lg hover:bg-pink-600 transition"
+                  >
+                    GITHUB
+                  </a>
+                  <a
+                    href={proj.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-300 text-gray-800 px-6 py-2 rounded-lg hover:bg-gray-400 transition"
+                  >
+                    Live Demo
+                  </a>
                 </div>
-
-                {/* == Dialog Box === */}
-                {selected && (
-                    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-6">
-                        <div className="bg-[#150c2e] rounded-2xl max-w-3xl w-full p-6 relative shadow-xl">
-                            {/* Close Button */}
-                            <button
-                                className="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"
-                                onClick={() => setSelected(null)}
-                            >
-                                X
-                            </button>
-
-                            {/* Content */}
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div>
-                                    <h3 className="text-2xl font-semibold mb-3">
-                                        {selected.title}
-                                    </h3>
-                                    <p className="mb-3 text-gray-300">{selected.description}</p>
-                                    <p className="font-semibold mt-2">Tech Stack:</p>
-                                    <ul className="list-disc list-inside text-gray-400 mb-4">
-                                        {selected.tech.map((t, i) => (
-                                            <li key={i}>{t}</li>
-                                        ))}
-                                    </ul>
-                                    <div className="flex gap-4">
-                                        <a 
-                                            href={selected.live} 
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="bg-indigo-600 px-4 py-2 rounded-lg hover:bg-indigo-500 transition"
-                                        >
-                                            Live Demo
-                                        </a>
-                                        <a 
-                                            href={selected.github} 
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="bg-gray-400 px-4 py-2 rounded-lg hover:bg-gray-800 transition"
-                                        >
-                                            GitHub
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <img 
-                                        src={selected.image} 
-                                        alt={selected.title}
-                                        className="w-full h-64 object-cover rounded-lg border border-gray-700"
-                                    />
-                                </div>
-                            </div> 
-                        </div>
-                    </div>
-                )}
+              </div>
             </div>
-        </section>
-    );
-};
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

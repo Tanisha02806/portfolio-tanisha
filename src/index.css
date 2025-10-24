@@ -3,26 +3,58 @@
 @tailwind utilities;
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
-
-/* Optional custom scrollbar and global styles */
+/* Optional custom scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: #6C63FF;
+::-webkit-scrollbar-track {
+  background: #ffe1f0; /* Light pink track */
   border-radius: 4px;
 }
 
-/* Reset default margines and background */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff77b1, #ffb6c1); /* Gradient thumb */
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff4f91, #ff90b0); /* Hover effect */
+}
+
+/* Reset default margins and background */
 html {
   scroll-behavior: smooth;
+  cursor: none; /* Hide default cursor */
 }
+
 html,
 body,
 #root {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: linear-gradient(to right, #1e1b3c, #2a2455, #3a3070);
+  background: linear-gradient(to right, #ffd6e0, #ffe1f0, #fff0f5);
+}
+
+/* Custom cursor */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #ff77b1;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease, background-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+  z-index: 9999;
+}
+
+/* Optional hover effect on interactive elements */
+button:hover,
+a:hover {
+  cursor: none; /* hides default cursor */
 }
